@@ -114,7 +114,7 @@ stages:
               commands: |
                 set -e
                 echo "$(STAGINGUSERPASSWORD)" | sudo -S -p '' chmod +x $(restoreDBscript)
-                echo "$(DB_PASSWORD)" | sudo -S -p '' $(restoreDBscript) \
+                echo "$(STAGINGUSERPASSWORD)" | sudo -S -p '' $(restoreDBscript) \
                     "$(DB_PASSWORD)" \
                     "$(dbUser)" \
                     "$(dbName)" \
