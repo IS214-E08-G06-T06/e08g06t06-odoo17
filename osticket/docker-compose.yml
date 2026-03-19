@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  osticket:
+    image: campbellsoftwaresolutions/osticket
+    container_name: osticket
+    ports:
+      - "8080:80"
+    restart: always
