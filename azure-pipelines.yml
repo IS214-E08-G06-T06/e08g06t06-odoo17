@@ -1,16 +1,16 @@
 trigger:
   branches:
     include:
-      - Staging
+      - Staging-Test
       - master
 
 pool:
   name: Default
 
 variables:
-  repoUrl: 'https://github.com/souravb-smu/odoo17.git'
-  updateScript: '/home/azureuser/deploy-temp/update_code.sh'
-  stagePath: '/home/azureuser/'
+  repoUrl: 'https://$(GITHUB_PAT)@github.com/IS214-E08-G06-T06/e08g06t06-odoo17.git'
+  updateScript: '/home/is214/deploy-temp/update_code.sh'
+  stagePath: '/home/is214/'
 
 stages:
 
@@ -19,7 +19,7 @@ stages:
 # =========================
 - stage: Staging
   displayName: Deploy to Staging
-  condition: eq(variables['Build.SourceBranchName'], 'Staging')
+  condition: eq(variables['Build.SourceBranchName'], 'Staging-Test')
 
   jobs:
   - deployment: DeployStaging
@@ -41,7 +41,7 @@ stages:
                 cd $(stagePath)
                 rm -rf deploy-temp *-odoo17
 
-                git clone -b Staging $(repoUrl) --quiet
+                git clone -b Staging-Test $(repoUrl) --quiet
                 mv *-odoo17 deploy-temp
 
                 cd deploy-temp
