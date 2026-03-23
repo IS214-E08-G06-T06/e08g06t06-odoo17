@@ -78,7 +78,7 @@ stages:
           - task: SSH@0
             displayName: "Sync Code - Production"
             inputs:
-              sshEndpoint: 'ssh-odoo17-production'
+              sshEndpoint: 'ssh-esmos-prod'
               runOptions: commands
               commands: |
                 set -e
